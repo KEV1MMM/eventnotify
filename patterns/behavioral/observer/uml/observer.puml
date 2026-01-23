@@ -1,0 +1,18 @@
+@startuml
+interface Subscriber {
+  + update(eventType: String, payload: String)
+}
+
+class EventBus {
+  - subscribers : Map<String, List<Subscriber>>
+  + subscribe(eventType: String, s: Subscriber)
+  + publish(eventType: String, payload: String)
+}
+
+class EmailSubscriber
+class SmsSubscriber
+
+Subscriber <|.. EmailSubscriber
+Subscriber <|.. SmsSubscriber
+EventBus o-- Subscriber : notifies >
+@enduml
