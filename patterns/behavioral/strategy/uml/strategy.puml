@@ -1,0 +1,18 @@
+---
+## UML  
+`patterns/behavioral/strategy/uml/strategy.puml`
+
+```puml
+@startuml
+interface PaymentStrategy {
+  +pay(amount)
+}
+
+class CreditCardPayment
+class PayPalPayment
+class Demo
+
+PaymentStrategy <|.. CreditCardPayment
+PaymentStrategy <|.. PayPalPayment
+Demo --> PaymentStrategy
+@enduml
