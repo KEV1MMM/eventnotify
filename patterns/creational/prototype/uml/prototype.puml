@@ -1,0 +1,24 @@
+@startuml
+title Prototype (Class Diagram)
+
+interface Prototype {
+  +clone(): Prototype
+}
+
+class NotificationTemplate implements Prototype {
+  +channel: String
+  +title: String
+  +body: String
+  +clone(): Prototype
+  +withBody(newBody: String): NotificationTemplate
+}
+
+class TemplateRegistry {
+  -templates: Map<String, NotificationTemplate>
+  +register(key: String, template: NotificationTemplate): void
+  +createFrom(key: String): NotificationTemplate
+}
+
+Prototype <|.. NotificationTemplate
+TemplateRegistry o--> NotificationTemplate
+@enduml
