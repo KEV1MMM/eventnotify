@@ -1,0 +1,26 @@
+@startuml
+title Facade (Class Diagram)
+
+class NotificationFacade {
+  -validator: Validator
+  -formatter: Formatter
+  -sender: Sender
+  +sendNotification(userId: String, message: String): void
+}
+
+class Validator {
+  +isValid(userId: String, message: String): boolean
+}
+
+class Formatter {
+  +format(userId: String, message: String): String
+}
+
+class Sender {
+  +send(payload: String): void
+}
+
+NotificationFacade o--> Validator
+NotificationFacade o--> Formatter
+NotificationFacade o--> Sender
+@enduml
