@@ -24,5 +24,16 @@ javac Demo.java
 **Ejecutar:**
 ```bash
 java Demo
-
 ```
+
+### Implementación en JavaScript 
+Archivo: code/javascript/demo.js
+**Ejecutar:**
+```bash
+cd patterns/behavioral/chain-of-responsibility/code/javascript
+node demo.js
+```
+
+### Estructura UML
+Diagrama de clases en PlantUML:
+uml/chain-of-responsibility.puml
