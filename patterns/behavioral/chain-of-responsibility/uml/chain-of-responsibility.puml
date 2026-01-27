@@ -1,0 +1,40 @@
+@startuml
+title Chain of Responsibility (Class Diagram)
+
+class NotificationRequest {
+  +userId: String
+  +message: String
+  +isSpam: boolean
+  +priority: int
+}
+
+interface Handler {
+  +setNext(next: Handler): Handler
+  +handle(req: NotificationRequest): boolean
+}
+
+abstract class AbstractHandler implements Handler {
+  -next: Handler
+  +setNext(next: Handler): Handler
+  +handle(req: NotificationRequest): boolean
+  #handleNext(req: NotificationRequest): boolean
+}
+
+class SpamCheckHandler extends AbstractHandler {
+  +handle(req: NotificationRequest): boolean
+}
+
+class RateLimitHandler extends AbstractHandler {
+  +handle(req: NotificationRequest): boolean
+}
+
+class SendNotificationHandler extends AbstractHandler {
+  +handle(req: NotificationRequest): boolean
+}
+
+AbstractHandler o--> Handler : next
+SpamCheckHandler --|> AbstractHandler
+RateLimitHandler --|> AbstractHandler
+SendNotificationHandler --|> AbstractHandler
+Handler ..> NotificationRequest : uses
+@enduml
