@@ -20,6 +20,9 @@ Este ejemplo implementa una cadena de validación y envío de notificaciones, do
 ```bash
 cd patterns/behavioral/chain-of-responsibility/code/java
 javac Demo.java
-
-Ejecutar: 
+```
+**Ejecutar:**
+```bash
 java Demo
+
+```
