@@ -1,0 +1,23 @@
+@startuml
+title Template Method (Class Diagram)
+
+abstract class NotificationSender {
+  +sendNotification(): void
+  #validate(): boolean
+  #format(): String
+  #send(payload: String): void
+}
+
+class EmailSender extends NotificationSender {
+  #format(): String
+  #send(payload: String): void
+}
+
+class SmsSender extends NotificationSender {
+  #format(): String
+  #send(payload: String): void
+}
+
+NotificationSender <|-- EmailSender
+NotificationSender <|-- SmsSender
+@enduml
