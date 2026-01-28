@@ -1,0 +1,21 @@
+@startuml
+interface NotificationState {
+    + next(ctx)
+    + printStatus()
+}
+
+class NotificationContext {
+    - state : NotificationState
+    + setState(state)
+    + nextState()
+}
+
+class DraftState
+class SentState
+class DeliveredState
+
+NotificationState <|.. DraftState
+NotificationState <|.. SentState
+NotificationState <|.. DeliveredState
+NotificationContext o--> NotificationState
+@enduml
