@@ -1,0 +1,35 @@
+
+### 3.2 UML — `patterns/creational/factory-method/uml/factory-method.puml`
+```puml
+@startuml
+interface Button {
+  +render(): void
+}
+
+class WindowsButton implements Button {
+  +render(): void
+}
+
+class HtmlButton implements Button {
+  +render(): void
+}
+
+abstract class Dialog {
+  +createButton(): Button
+  +render(): void
+}
+
+class WindowsDialog extends Dialog {
+  +createButton(): Button
+}
+
+class WebDialog extends Dialog {
+  +createButton(): Button
+}
+
+Dialog ..> Button : creates
+WindowsDialog --|> Dialog
+WebDialog --|> Dialog
+WindowsButton ..|> Button
+HtmlButton ..|> Button
+@enduml
