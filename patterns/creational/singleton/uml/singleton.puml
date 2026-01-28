@@ -1,0 +1,11 @@
+@startuml
+class Database {
+  -instance: Database
+  -Database()
+  +getInstance(): Database
+  +query(sql: String): void
+}
+
+Database : {static} instance
+Database : {static} getInstance()
+@enduml
