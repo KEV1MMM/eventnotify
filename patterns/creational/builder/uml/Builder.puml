@@ -1,0 +1,32 @@
+@startuml
+
+class Notification {
+  - String recipient
+  - String message
+  - String channel
+  - boolean isPriority
+  + Notification(recipient, message, channel, isPriority)
+  + String toString()
+}
+
+class NotificationBuilder {
+  - String recipient
+  - String message
+  - String channel
+  - boolean isPriority
+  + setRecipient(String): NotificationBuilder
+  + setMessage(String): NotificationBuilder
+  + setChannel(String): NotificationBuilder
+  + setPriority(boolean): NotificationBuilder
+  + build(): Notification
+}
+
+class Demo {
+  + main(String[] args)
+}
+
+' Relaciones
+NotificationBuilder ..> Notification : builds >
+Demo ..> NotificationBuilder : uses >
+
+@enduml
