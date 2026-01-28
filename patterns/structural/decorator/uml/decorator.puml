@@ -1,0 +1,35 @@
+
+---
+
+## ✅ UML `patterns/structural/decorator/uml/decorator.puml`
+```puml
+@startuml
+interface Notifier {
+  +send(message: String)
+}
+
+class BaseNotifier implements Notifier {
+  +send(message: String)
+}
+
+abstract class NotifierDecorator implements Notifier {
+  -wrappee: Notifier
+  +NotifierDecorator(wrappee: Notifier)
+  +send(message: String)
+}
+
+class EmailDecorator extends NotifierDecorator {
+  +send(message: String)
+}
+
+class SmsDecorator extends NotifierDecorator {
+  +send(message: String)
+}
+
+NotifierDecorator *-- Notifier : wrappee
+BaseNotifier ..|> Notifier
+NotifierDecorator ..|> Notifier
+EmailDecorator --|> NotifierDecorator
+SmsDecorator --|> NotifierDecorator
+@enduml
+
