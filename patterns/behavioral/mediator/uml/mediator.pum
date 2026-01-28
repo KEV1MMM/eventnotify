@@ -1,0 +1,35 @@
+
+```puml
+@startuml
+title Mediator (Class Diagram)
+
+interface Mediator {
+  +notify(sender: Colleague, event: String, data: String): void
+}
+
+abstract class Colleague {
+  -mediator: Mediator
+  +Colleague(m: Mediator)
+  +send(event: String, data: String): void
+  +receive(message: String): void
+}
+
+class NotificationHub implements Mediator {
+  -email: EmailService
+  -sms: SmsService
+  -push: PushService
+  +notify(sender: Colleague, event: String, data: String): void
+}
+
+class EmailService extends Colleague
+class SmsService extends Colleague
+class PushService extends Colleague
+
+Mediator <|.. NotificationHub
+Colleague <|-- EmailService
+Colleague <|-- SmsService
+Colleague <|-- PushService
+NotificationHub o--> EmailService
+NotificationHub o--> SmsService
+NotificationHub o--> PushService
+@enduml
