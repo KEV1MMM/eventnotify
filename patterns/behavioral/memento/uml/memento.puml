@@ -1,0 +1,25 @@
+@startuml
+title Memento - Class Diagram
+
+class Originator {
+  -state: String
+  +setState(state: String)
+  +save(): Memento
+  +restore(m: Memento)
+}
+
+class Memento {
+  -state: String
+  +getState(): String
+}
+
+class Caretaker {
+  -history: List<Memento>
+  +add(m: Memento)
+  +get(index: int): Memento
+}
+
+Originator --> Memento : creates
+Caretaker o-- Memento : stores
+Originator --> Caretaker : uses
+@enduml
