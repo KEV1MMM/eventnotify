@@ -1,0 +1,45 @@
+
+### 3.2 UML — `patterns/behavioral/visitor/uml/visitor.puml`
+```puml
+@startuml
+interface Shape {
+  +accept(v: Visitor): void
+}
+
+class Dot implements Shape {
+  +x: int
+  +y: int
+  +accept(v: Visitor): void
+}
+
+class Circle implements Shape {
+  +x: int
+  +y: int
+  +r: int
+  +accept(v: Visitor): void
+}
+
+class Rectangle implements Shape {
+  +w: int
+  +h: int
+  +accept(v: Visitor): void
+}
+
+interface Visitor {
+  +visitDot(d: Dot): void
+  +visitCircle(c: Circle): void
+  +visitRectangle(r: Rectangle): void
+}
+
+class JsonExportVisitor implements Visitor {
+  +visitDot(d: Dot): void
+  +visitCircle(c: Circle): void
+  +visitRectangle(r: Rectangle): void
+}
+
+Dot ..|> Shape
+Circle ..|> Shape
+Rectangle ..|> Shape
+JsonExportVisitor ..|> Visitor
+Shape ..> Visitor : accept()
+@enduml
