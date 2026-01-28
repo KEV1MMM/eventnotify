@@ -1,0 +1,20 @@
+@startuml
+title Flyweight (Class Diagram)
+
+interface Flyweight {
+  +render(extrinsicState: String): void
+}
+
+class NotificationType implements Flyweight {
+  -channel: String
+  +render(extrinsicState: String): void
+}
+
+class FlyweightFactory {
+  -flyweights: Map<String, Flyweight>
+  +getFlyweight(channel: String): Flyweight
+}
+
+Flyweight <|.. NotificationType
+FlyweightFactory o--> Flyweight
+@enduml
