@@ -1,0 +1,25 @@
+@startuml
+interface Iterator {
+    + hasNext() : boolean
+    + next() : Object
+}
+
+interface Container {
+    + getIterator() : Iterator
+}
+
+class NotificationHistory {
+    - notifications : String[]
+    + getIterator() : Iterator
+}
+
+class HistoryIterator {
+    - index : int
+    + hasNext() : boolean
+    + next() : Object
+}
+
+Container <|.. NotificationHistory
+Iterator <|.. HistoryIterator
+NotificationHistory +-- HistoryIterator
+@enduml
