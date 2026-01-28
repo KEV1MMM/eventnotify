@@ -1,0 +1,20 @@
+@startuml
+interface MessageChannel {
+    + sendMessage(msg)
+}
+
+class EmailChannel
+class SMSChannel
+
+abstract class Notification {
+    - channel : MessageChannel
+    + notify(msg)
+}
+
+class UrgentNotification
+
+MessageChannel <|.. EmailChannel
+MessageChannel <|.. SMSChannel
+Notification o--> MessageChannel : bridge
+Notification <|-- UrgentNotification
+@enduml
