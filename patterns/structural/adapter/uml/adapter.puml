@@ -1,0 +1,22 @@
+@startuml
+interface SMSProvider {
+    + sendSMS(number, message)
+}
+
+class LegacyNotificationService {
+    + sendOldSchool(msg, recipient)
+}
+
+class SMSAdapter {
+    - legacyService : LegacyNotificationService
+    + sendSMS(number, message)
+}
+
+class Demo {
+    + main()
+}
+
+SMSProvider <|.. SMSAdapter : implements
+SMSAdapter --> LegacyNotificationService : adapts
+Demo --> SMSProvider : uses
+@enduml
